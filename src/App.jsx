@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
+import Context from './context/Context';
+import PostPage from './components/PostsPage';
 
 function App() {
 
@@ -16,11 +18,13 @@ function App() {
   useEffect(() => { getPost() }, []);
 
 
-
+  const ProviderValue = { postList };
 
   return (
     <>
-
+      <Context.Provider value={ProviderValue}>
+        <PostPage />
+      </Context.Provider>
     </>
   )
 }
